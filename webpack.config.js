@@ -20,8 +20,8 @@ module.exports = {
   watch: true,
   mode: "development",
   entry: {
-    main: "./src/index.jsx",
-    bootstrap: "./src/bootstrap.js",
+    main: "./src/index.tsx",
+    bootstrap: "./src/bootstrap.ts",
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -32,7 +32,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
@@ -54,9 +54,12 @@ module.exports = {
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: "[local]",
+              localIdentName: "[local]_[hash:base64:5]",
               sourceMap: true,
             }
+          },
+          {
+            loader: "sass-loader"
           }
         ]
       }
